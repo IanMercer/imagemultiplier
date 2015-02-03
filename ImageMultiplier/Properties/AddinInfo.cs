@@ -9,7 +9,7 @@ using Mono.Addins.Description;
 )]
 
 [assembly:AddinName ("ImageMultiplier")]
-[assembly:AddinCategory ("IDE Extensions")]
+[assembly:AddinCategory ("IDE extensions")]
 [assembly:AddinDescription ("Image Multiplier creates icons for Android and iOS from SVG files")]
 [assembly:AddinAuthor ("Ian Mercer")]
 

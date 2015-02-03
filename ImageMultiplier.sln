@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageMultiplier", "ImageMultiplier\ImageMultiplier.csproj", "{1A1D66F4-8ACE-48A2-8798-F507D4750DF8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9D0B6B14-A4E6-4CFE-BE9A-4C63865A7C4D}"
+	ProjectSection(SolutionItems) = preProject
+		addin-project.xml = addin-project.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +18,7 @@ Global
 		{1A1D66F4-8ACE-48A2-8798-F507D4750DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A1D66F4-8ACE-48A2-8798-F507D4750DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A1D66F4-8ACE-48A2-8798-F507D4750DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
