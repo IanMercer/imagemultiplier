@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<Template Originator="Ian Mercer" Language="IMultiplier" Created="2/2/2015" LastModified="2/2/2015">
+	<TemplateConfiguration>
+		<_Name>Image Multiplier List File</_Name>
+		<Icon>md-text-file-icon</Icon>
+		<_Description>Creates an empty Image Multiplier List file.</_Description>
+		<_Category>Misc</_Category>
+		<DefaultFilename>default</DefaultFilename>
+	</TemplateConfiguration>
+	<TemplateFiles>
+		<File DefaultExtension=".multiplier" CustomTool="ImageMultiplierGenerator" BuildAction="Content" />
+	</TemplateFiles>
+	<FileOptions />
+</Template>

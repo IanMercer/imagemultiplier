@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{7DBEB09D-BB9F-4D92-A141-A009135475EF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{1A1D66F4-8ACE-48A2-8798-F507D4750DF8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ImageMultiplier</RootNamespace>
+    <AssemblyName>ImageMultiplier</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Addins">
+      <Package>/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/Mono.Addins.dll</Package>
+    </Reference>
+    <Reference Include="MonoDevelop.Core">
+      <Package>/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/MonoDevelop.Core.dll</Package>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <Package>/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/MonoDevelop.Ide.dll</Package>
+    </Reference>
+    <Reference Include="Mono.TextEditor">
+      <Package>/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/Mono.TextEditor.dll</Package>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <Package>/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/ICSharpCode.NRefactory.dll</Package>
+    </Reference>
+    <Reference Include="gtk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gdk-sharp" />
+    <Reference Include="pango-sharp" />
+    <Reference Include="Mono.Cairo" />
+    <Reference Include="Svg">
+      <HintPath>..\packages\Svg.1.7.0\lib\Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AddinInfo.cs" />
+    <Compile Include="ThreadAsyncOperation.cs" />
+    <Compile Include="ImageMultiplierGenerator.cs" />
+    <Compile Include="OutputSpecifier.cs" />
+    <Compile Include="ProcessSpecifier.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Manifest.addin.xml" />
+    <EmbeddedResource Include="ImageMultiplier.xft.xml" />
+    <EmbeddedResource Include="ImageMultiplierSyntax.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
