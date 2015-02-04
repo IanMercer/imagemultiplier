@@ -1,4 +1,4 @@
-<AddinProject appVersion="2.4">
+<AddinProject appVersion="5.0">
 	<Project platforms="Mac">
 		<AddinFile>ImageMultiplier/bin/Debug/ImageMultiplier.dll</AddinFile>
 		<BuildFile>ImageMultiplier.sln</BuildFile>
