@@ -48,12 +48,16 @@ Here is a sample '.multiplier' file:
     # You can process multiple directories, each with different type specifiers
     { process: './*.svg', as: ['AndroidIcon', 'iosIcon'] }
 
-Note how the 'as' parameter in process instruction lists the 'type' values from earlier in the file
-that should be created as outputs.
+Note how the 'as' parameter in the process instructions contains an array of 'type' values. These
+refer to the output types defined earlier in the file. Each SVG file or directory of SVG files can
+be processes against a different set of output types. This allows you to have different sets of specifiers
+for App icons, toolbar icons, App Store icons, etc..
 
-Note also that the 'path' parameter is a format string into which the source file name will be poured.
+Note also that the 'path' parameter is a format string into which the source file name (minus the .SVG
+extension) will be poured.
 
-Each line in the file is a JSON object although the file itself is not a JSON object.
+Each line in the file is a JSON object although the file itself is not a JSON object. The parser looks
+for two different JSON object types: one containing a `type` field and one containing a `process` field.
 
 ## Setup / Install
 
@@ -70,4 +74,22 @@ To build the Addin package, compile the solution and then open a terminal window
     "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool" setup pack ImageMultiplier/bin/debug/ImageMultiplier.dll
 
 This will create the .mpack file which you can install manually by following the instructions above.
+
+## Tips and Tricks
+
+Make sure your SVG file has an valid XML header on it:
+
+     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+If the build process gets too slow, consider splitting your processing into separate `.multiple` files.
+
+## Future Improvements
+
+Support colorization of SVG files to allow, for example, a red, green and blue version of an icon.
+
+Support height and width for non-square icons.
+
+Check the PNG file last-modified date against the SVG last-modified date and the `.multiplier` file 
+last-modified date and only update the PNG when necessary.
+
 
