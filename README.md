@@ -2,12 +2,24 @@
 
 Image Multiplier is an AddIn for Xamarin Studio.
 
-It adds a new file type '.multiplier' to the Add new menu under the category Misc.
+It adds a new file type '.multiplier' in which you can specify a set of output image files that
+you want to create and a set of source SVG files you want to process. 
 
-In this file you specify a set of output image files that you want to create and then
-a set of source SVG files you want to process. It multiplies each source SVG file by
-each matched output specifier to create the large number of PNG files that are needed
-for a typical, modern Android and iOS project in Xamarin.
+Image Multiplier processes each source SVG file against each matched set of output specifiers
+to create PNG files. The output specifier defines the size of the image and the file name and
+directory where it should be created.
+
+From a simple text file and a set of SVG files, Image Multiplier can create all of the image
+sizes you need for any iOS, Android, Windows Phone, Mac, or Web projects in your solution.
+
+You can specify different sets of output image specifiers for each component of your application,
+e.g. one set for icons, another for toolbar icons, another for App Store icons and another for
+your web site.
+
+To regenerate all your image files simply edit the .multiplier file and save it.
+
+There is no easier way to create all of the PNG files you need for your Xamarin cross-platform
+solution.
 
 Here is a sample '.multiplier' file:
 
@@ -45,17 +57,17 @@ Each line in the file is a JSON object although the file itself is not a JSON ob
 
 ## Setup / Install
 
-If you just want the add-in you can download the ImageMultipler_1.3.2.mpack (or later) file and then install it
-manually into Xamarin Studio using the menu item 'Xamarin Studio' > 'Add-in Manager...' and then click 'Install from file ...'.
+You can install Image Multiplier from the `Addin Manager` menu in Xamarin Studio. Go to `Gallery` and look
+under `IDE extensions`.
 
+You can also download the `ImageMultipler_1.3.5.mpack` (or later) file and then install it
+manually into Xamarin Studio using the menu item 'Xamarin Studio' > 'Add-in Manager...' and then click 'Install from file ...'.
 
 ## Build
 
 To build the Addin package, compile the solution and then open a terminal window and run the following commmand:
 
-    "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool" setup pack ImageMultiplier/Properties/Manifest.addin.xml
+    "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool" setup pack ImageMultiplier/bin/debug/ImageMultiplier.dll
 
-This will create a file called "__Manifest_0.0.0.0.mpack" which you can then rename and copy to somewhere
-people can install it.
-
+This will create the .mpack file which you can install manually by following the instructions above.
 
