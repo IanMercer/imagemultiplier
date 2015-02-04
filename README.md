@@ -45,7 +45,7 @@ Each line in the file is a JSON object although the file itself is not a JSON ob
 
 ## Setup / Install
 
-If you just want the add-in you can download the ImageMultipler.mpack file and then install it
+If you just want the add-in you can download the ImageMultipler_1.3.2.mpack (or later) file and then install it
 manually into Xamarin Studio using the menu item 'Xamarin Studio' > 'Add-in Manager...' and then click 'Install from file ...'.
 
 
