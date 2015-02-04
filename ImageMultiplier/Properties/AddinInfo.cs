@@ -5,7 +5,7 @@ using Mono.Addins.Description;
 [assembly:Addin (
     "ImageMultiplier", 
     Namespace = "ImageMultiplier",
-    Version = "1.3.2"
+    Version = "1.3.5"
 )]
 
 [assembly:AddinName ("ImageMultiplier")]
@@ -15,3 +15,4 @@ using Mono.Addins.Description;
 
 [assembly:AddinDependency ("::MonoDevelop.Core", MonoDevelop.BuildInfo.Version)]
 [assembly:AddinDependency ("::MonoDevelop.Ide", MonoDevelop.BuildInfo.Version)]
+[assembly:AddinDependency ("::MonoDevelop.SourceEditor2", MonoDevelop.BuildInfo.Version)]
