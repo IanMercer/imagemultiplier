@@ -22,8 +22,10 @@
 	<Property name="StringQuote">"</Property>
 	<Property name="StringQuote">'</Property>
 
-	<EolSpan color="Comment(Line)" rule="Comment">#</EolSpan>
-
+<!--	<EolSpan color="Comment(Line)" rule="Comment">
+		<Begin startsLine="true">#</Begin>
+	</EolSpan>
+-->
 	<Span rule="Ruleset">
 		<Begin>{</Begin>
 		<End>}</End>

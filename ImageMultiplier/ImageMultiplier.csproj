@@ -69,12 +69,16 @@
     <Compile Include="ProcessSpecifier.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Manifest.addin.xml" />
     <EmbeddedResource Include="ImageMultiplier.xft.xml" />
     <EmbeddedResource Include="ImageMultiplierSyntax.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Manifest.addin.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

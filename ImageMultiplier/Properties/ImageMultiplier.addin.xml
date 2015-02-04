@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionModel id="ImageMultiplier" name="Image Multiplier">
+	<Runtime>
+		<Import file="../ImageMultiplier.xft.xml" />
+		<Import file="../ImageMultiplierSyntax.xml" />
+		<Import file="../Bin/Debug/ImageMultiplier.dll" />
+		<Import file="../Bin/Debug/Newtonsoft.Json.dll" />
+		<Import file="../Bin/Debug/Svg.dll" />
+	</Runtime>
+
+	<Extension path="/MonoDevelop/Ide/CustomTools">
+		<Tool name="ImageMultiplierGenerator" type="ImageMultiplier.ImageMultiplierGenerator" />
+	</Extension>
+
+	<Extension path="/MonoDevelop/Ide/FileTemplates">
+		<FileTemplate id="ImageMultiplierTemplate" resource="ImageMultiplier.ImageMultiplier.xft.xml" />
+	</Extension>
+
+	<Extension path="/MonoDevelop/Core/MimeTypes">
+		<MimeType id="text/x-image-multiplier" _description="Image Multiplier List File" 
+			icon="md-fs-file" isText="true">
+			<File pattern="*.multiplier" />
+		</MimeType>
+	</Extension>
+
+	<Extension path="/MonoDevelop/SourceEditor2/SyntaxModes">
+		<Templates resource="ImageMultiplier.ImageMultiplierSyntax.xml"/>
+	</Extension>
+
+</ExtensionModel>

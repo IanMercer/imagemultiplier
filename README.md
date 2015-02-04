@@ -43,4 +43,19 @@ Note also that the 'path' parameter is a format string into which the source fil
 
 Each line in the file is a JSON object although the file itself is not a JSON object.
 
+## Setup / Install
+
+If you just want the add-in you can download the ImageMultipler.mpack file and then install it
+manually into Xamarin Studio using the menu item 'Xamarin Studio' > 'Add-in Manager...' and then click 'Install from file ...'.
+
+
+## Build
+
+To build the Addin package, compile the solution and then open a terminal window and run the following commmand:
+
+    "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool" setup pack ImageMultiplier/Properties/Manifest.addin.xml
+
+This will create a file called "__Manifest_0.0.0.0.mpack" which you can then rename and copy to somewhere
+people can install it.
+
 
