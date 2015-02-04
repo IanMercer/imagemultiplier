@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<AddIn id="ImageMultiplier.ImageMultiplier">
+<ExtensionModel id="ImageMultiplier.ImageMultiplier">
 
     <Header>
         <Name>Image Multiplier</Name>
@@ -34,4 +34,4 @@
 		<Templates resource="ImageMultiplier.ImageMultiplierSyntax.xml"/>
 	</Extension>
 
-</AddIn>
+</ExtensionModel>

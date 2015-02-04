@@ -92,14 +92,12 @@
   <ItemGroup>
     <EmbeddedResource Include="ImageMultiplier.xft.xml" />
     <EmbeddedResource Include="ImageMultiplierSyntax.xml" />
+    <EmbeddedResource Include="Manifest.addin.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Manifest.addin.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 </Project>
