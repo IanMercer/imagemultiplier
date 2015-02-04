@@ -24,7 +24,7 @@
 	</Extension>
 
 	<Extension path="/MonoDevelop/Core/MimeTypes">
-		<MimeType id="text/x-image-multiplier" _description="Image Multiplier List File" 
+		<MimeType id="text/x-multiplier" _description="Image Multiplier List File" 
 			icon="md-fs-file" isText="true">
 			<File pattern="*.multiplier" />
 		</MimeType>
