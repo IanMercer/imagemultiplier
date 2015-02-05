@@ -81,7 +81,11 @@ Make sure your SVG file has an valid XML header on it:
 
      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-If the build process gets too slow, consider splitting your processing into separate `.multiple` files.
+Note that no changes are made to a PNG file if it is already newer than the SVG file. So if you
+change the image parameters but do not change the file name format string you will need to 
+manually delete the PNG file. You can also `touch` all the .SVG files to move their dates up
+which will force regeneration of all the PNG files.
+
 
 ## Future Improvements
 
@@ -89,7 +93,5 @@ Support colorization of SVG files to allow, for example, a red, green and blue v
 
 Support height and width for non-square icons.
 
-Check the PNG file last-modified date against the SVG last-modified date and the `.multiplier` file 
-last-modified date and only update the PNG when necessary.
 
 
