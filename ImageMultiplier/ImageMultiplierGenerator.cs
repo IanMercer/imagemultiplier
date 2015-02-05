@@ -25,6 +25,8 @@ namespace ImageMultiplier
                 string dir = System.IO.Path.GetDirectoryName(featureFile.FilePath);
                 monitor.Log.WriteLine("Creating images for " + featureFile.FilePath);
 
+                var processor = new ImageProcessor(monitor, result);
+
                 var lines = System.IO.File.ReadLines(featureFile.FilePath);
                 int lineNumber = 0;
                 var outputSpecifiers = new List<OutputSpecifier>();
@@ -44,7 +46,7 @@ namespace ImageMultiplier
                             var ts = JsonConvert.DeserializeObject<OutputSpecifier>(line);
                             if (ts != null)
                             {
-                                string testPath = GetFullOutputPath(dir, ts, "test.svg");
+                                string testPath = processor.GetFullOutputPath(dir, ts, "test.svg");
                                 var directory = Path.GetDirectoryName(testPath);
                                 if (!Directory.Exists(directory))
                                 {
@@ -70,19 +72,8 @@ namespace ImageMultiplier
                                 var subdir = Path.GetDirectoryName(ps.process);
                                 var searchPattern = Path.GetFileName(ps.process);
                                 var inputDirectory = Path.Combine(dir, subdir);
-
-                                foreach (var file in Directory.GetFiles(inputDirectory, searchPattern))
-                                {
-                                    monitor.Log.WriteLine(file);
-
-                                    var outputters = outputSpecifiers.Where(s => ps.@as.Contains(s.type));
-                                    foreach (var outputter in outputters)
-                                    {
-                                        string formattedPath = GetFullOutputPath(dir, outputter, file);
-                                        monitor.Log.WriteLine("    ---> " + formattedPath);
-                                        ProcessOneFile(file, formattedPath, outputter.width, monitor, result, lineNumber);
-                                    }
-                                }
+                                var outputters = outputSpecifiers.Where (s => ps.@as.Contains (s.type)); 
+                                processor.Process(dir, Directory.GetFiles (inputDirectory, searchPattern), outputters, lineNumber);
                             }
                             else
                             {
@@ -105,48 +96,6 @@ namespace ImageMultiplier
             }, result);
         }
 
-        private string GetFullOutputPath (string dir, OutputSpecifier outputter, string filename)
-        {
-            string formattedPath = string.Format(outputter.path, Path.GetFileNameWithoutExtension(filename)) + ".png";
-            string fullPath = Path.Combine(dir, "..", formattedPath);
-            return fullPath;
-        }
-
-        private void ProcessOneFile(string inputPath, string path, int width,
-            IProgressMonitor monitor, SingleFileCustomToolResult result, 
-            int lineNumber)
-        {
-            try
-            {
-                if (!File.Exists(inputPath)) 
-                {
-                    result.Errors.Add(new CompilerError(inputPath, lineNumber, 1, "Err2", "File not found " + inputPath));
-                    return;
-                }
-
-                var svgDocument = SvgDocument.Open(inputPath);
-                if (svgDocument == null)
-                {
-                    result.Errors.Add(new CompilerError(inputPath, lineNumber, 1, "Err3", "Could not open svgDocument " + inputPath));
-                    return;
-                }
-
-                // Wipe out any size information
-                svgDocument.Height = new SvgUnit(SvgUnitType.Pixel, width);
-                svgDocument.Width =  new SvgUnit(SvgUnitType.Pixel, width);
-
-//                svgDocument.Height = new SvgUnit(SvgUnitType.Percentage, 100.0f);
-//                svgDocument.Width = new SvgUnit(SvgUnitType.Percentage, 100.0f);
-                //svgDocument.ViewBox = SvgViewBox.Empty;
-
-                var bb = new System.Drawing.Bitmap(width, width);
-                svgDocument.Draw(bb);
-                bb.Save(path, ImageFormat.Png);
-            }
-           catch (Exception ex)
-            {
-                result.Errors.Add (new CompilerError (inputPath, lineNumber, 1, "Err27", ex.Message));
-            }
-        }
+ 
     }
 }

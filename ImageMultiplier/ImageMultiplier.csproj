@@ -88,6 +88,7 @@
     <Compile Include="ImageMultiplierGenerator.cs" />
     <Compile Include="OutputSpecifier.cs" />
     <Compile Include="ProcessSpecifier.cs" />
+    <Compile Include="ImageProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ImageMultiplier.xft.xml" />
