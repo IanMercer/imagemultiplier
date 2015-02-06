@@ -50,7 +50,8 @@ namespace ImageMultiplier
                                 var directory = Path.GetDirectoryName(testPath);
                                 if (!Directory.Exists(directory))
                                 {
-                                    result.Errors.Add(new CompilerError(featureFile.FilePath, lineNumber, 1, "Err17", "Directory not found " + directory));
+                                    string shortDirectory = Path.GetDirectoryName(string.Format(ts.path, "x.png"));
+                                    result.Errors.Add(new CompilerError(featureFile.FilePath, lineNumber, 1, "Err17", "Directory not found " + shortDirectory));
                                 }
                                 else
                                 {
@@ -68,12 +69,21 @@ namespace ImageMultiplier
                             var ps = JsonConvert.DeserializeObject<ProcessSpecifier>(line);
                             if (ps != null)
                             {
-                                // Process output!
+                                // Process output
                                 var subdir = Path.GetDirectoryName(ps.process);
                                 var searchPattern = Path.GetFileName(ps.process);
                                 var inputDirectory = Path.Combine(dir, subdir);
-                                var outputters = outputSpecifiers.Where (s => ps.@as.Contains (s.type)); 
-                                processor.Process(dir, Directory.GetFiles (inputDirectory, searchPattern), outputters, lineNumber);
+
+                                if (Directory.Exists(inputDirectory))
+                                {
+                                    var outputters = outputSpecifiers.Where (s => ps.@as.Contains (s.type)); 
+                                    processor.Process(dir, Directory.GetFiles (inputDirectory, searchPattern), outputters, lineNumber);
+                                }
+                                else
+                                {
+                                    result.Errors.Add(new CompilerError(featureFile.FilePath, lineNumber, 1, "Err17", "Directory not found " + subdir));
+                                }
+
                             }
                             else
                             {
