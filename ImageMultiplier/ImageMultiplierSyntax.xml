@@ -84,6 +84,8 @@
 			<Word>process</Word>
 			<Word>type</Word>
 			<Word>width</Word>
+			<Word>height</Word>
+			<Word>scaling</Word>
 			<Word>color</Word>
 			<Word>path</Word>
 			<Word>as</Word>

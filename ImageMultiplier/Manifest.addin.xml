@@ -3,7 +3,7 @@
 
     <Header>
         <Name>Image Multiplier</Name>
-        <Description>Creates all the icons you need for your Xamarin project from SVGs</Description>
+        <Description>Creates all the icons you need for your Xamarin project from SVGs.</Description>
         <Author>Ian Mercer</Author>
         <Url>http://github.com/ianmercer/imagemultiplier</Url>
         <Icon32>git.png</Icon32>
