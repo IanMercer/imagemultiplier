@@ -21,13 +21,15 @@ To regenerate all your image files simply edit the .multiplier file and save it.
 There is no easier way to create all of the PNG files you need for your Xamarin cross-platform
 solution.
 
-| ~__type__~	| 				| 										|
-|				| ~width~ 		| Output file width in pixels.			|
-|				| ~height~ 		| Output file height in pixels.			|
-|				| ~scaling~ 	| Output file scaling multiplier.		|
-|				| ~color~ 		| *Not currently Implimented.			|
-| ~__process__~	| 				| 										|
-|				| ~as~	 		| A JSON array of ~types~ to process.	|
+| Options		| Parameters	| Description							|
+| :-----------: | :-----------: | :------------------------------------ |
+| `__type__`	| 				| 										|
+|				| `width` 		| Output file width in pixels.			|
+|				| `height` 		| Output file height in pixels.			|
+|				| `scaling` 	| Output file scaling multiplier.		|
+|				| `color` 		| *Not currently Implimented.			|
+| `__process__`	| 				| 										|
+|				| `as`	 		| A JSON array of `types` to process.	|
 
 Here is a sample '.multiplier' file:
 
