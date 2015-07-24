@@ -23,12 +23,12 @@ solution.
 
 | Options		| Parameters	| Description							|
 | :-----------: | :-----------: | :------------------------------------ |
-| `__type__`	| 				| 										|
+| __type__		| 				| 										|
 |				| `width` 		| Output file width in pixels.			|
 |				| `height` 		| Output file height in pixels.			|
 |				| `scaling` 	| Output file scaling multiplier.		|
 |				| `color` 		| *Not currently Implimented.			|
-| `__process__`	| 				| 										|
+| __process__	| 				| 										|
 |				| `as`	 		| A JSON array of `types` to process.	|
 
 Here is a sample '.multiplier' file:
