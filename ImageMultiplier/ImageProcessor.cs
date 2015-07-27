@@ -7,6 +7,8 @@ using System.CodeDom.Compiler;
 using Svg;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace ImageMultiplier
 {
@@ -55,6 +57,9 @@ namespace ImageMultiplier
 		{
 			try {
 				var outputInfo = new FileInfo (outputPath);
+
+				//Create Directory if it doesn't exist
+				outputInfo.Directory.Create ();
 
 				if (!outputInfo.Exists) {
 					monitor.Log.WriteLine ("   --> PNG is new : " + outputPath);
@@ -122,6 +127,37 @@ namespace ImageMultiplier
 				using (var bb = new System.Drawing.Bitmap ((int)NewWidth, (int)NewHeight)) {
 					svgDocument.Draw (bb);
 					bb.Save (outputPath, ImageFormat.Png);
+				}
+
+				//If is imageset update Contents.json
+				if (outputter.ios_idiom != null) {
+					iOSImageSet imageSet;
+
+					var image = new iOSImageSetImage () {
+						filename = outputInfo.Name,
+						idiom = outputter.ios_idiom,
+						scale = outputter.ios_scale ?? "1x"
+					};
+
+					var JSONPath = Path.Combine (Path.GetDirectoryName (outputPath), "Contents.json");
+					var contentsJSON = new FileInfo (JSONPath);
+					if (contentsJSON.Exists) {
+						imageSet = JsonConvert.DeserializeObject<iOSImageSet> (File.ReadAllText (contentsJSON.FullName));
+
+						var currentImage = imageSet.images.FirstOrDefault (x => (x.idiom == image.idiom && x.scale == image.scale && x.subtype == image.subtype));
+						if (currentImage == null) { 
+							imageSet.images.Add (image);
+						} else {
+							currentImage = image;
+						}
+					} else {
+						imageSet = new iOSImageSet ();
+						imageSet.images.Add (image);
+
+					}
+
+					string json = JsonConvert.SerializeObject (imageSet, Formatting.Indented);
+					File.WriteAllText (JSONPath, json);
 				}
 			} catch (Exception ex) {
 				result.Errors.Add (new CompilerError (outputPath, lineNumber, 1, "Err27", ex.Message));

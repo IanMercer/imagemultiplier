@@ -42,5 +42,23 @@ namespace ImageMultiplier
 		/// </summary>
 		/// <value>The path.</value>
 		public string path { get; set; }
+
+		/// <summary>
+		/// Gets or sets the ios idiom.
+		/// </summary>
+		/// <value>The ios idiom.</value>
+		public string ios_idiom { get; set; }
+
+		/// <summary>
+		/// Gets or sets the ios scale.
+		/// </summary>
+		/// <value>The ios scale.</value>
+		public string ios_scale { get; set; }
+
+		/// <summary>
+		/// Gets or sets the ios subtype.
+		/// </summary>
+		/// <value>The ios subtype.</value>
+		public string ios_subtype { get; set; }
 	}
 }

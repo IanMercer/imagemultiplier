@@ -82,6 +82,8 @@
     <Compile Include="OutputSpecifier.cs" />
     <Compile Include="ProcessSpecifier.cs" />
     <Compile Include="ImageProcessor.cs" />
+    <Compile Include="iOSImageSet.cs" />
+    <Compile Include="iOSImageSetImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ImageMultiplier.xft.xml" />
