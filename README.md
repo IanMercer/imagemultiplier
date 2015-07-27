@@ -28,6 +28,9 @@ solution.
 |				| `height` 		| Output file height in pixels.			|
 |				| `scaling` 	| Output file scaling multiplier.		|
 |				| `color` 		| *Not currently Implimented.			|
+|				| `ios_idiom` 	| iOS Imageset idiom.					|
+|				| `ios_scale` 	| iOS Imageset scale.					|
+|				| `ios_subtype` | iOS Imageset subtype.					|
 | __process__	| 				| 										|
 |				| `as`	 		| A JSON array of `types` to process.	|
 
