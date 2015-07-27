@@ -21,14 +21,30 @@ To regenerate all your image files simply edit the .multiplier file and save it.
 There is no easier way to create all of the PNG files you need for your Xamarin cross-platform
 solution.
 
+| Options		| Parameters	| Description							|
+| :-----------: | :-----------: | :------------------------------------ |
+| __type__		| 				| 										|
+|				| `width` 		| Output file width in pixels.			|
+|				| `height` 		| Output file height in pixels.			|
+|				| `scaling` 	| Output file scaling multiplier.		|
+|				| `color` 		| *Not currently Implimented.			|
+|				| `ios_idiom` 	| iOS Imageset idiom.					|
+|				| `ios_scale` 	| iOS Imageset scale.					|
+|				| `ios_subtype` | iOS Imageset subtype.					|
+| __process__	| 				| 										|
+|				| `as`	 		| A JSON array of `types` to process.	|
+
 Here is a sample '.multiplier' file:
 
-    # This is a sample Image Multiplier specification file
-    # In here you define each of the output types you want to create
-    # And then provide search expressions for the SVG files you want to process
+    # This is a sample Image Multiplier specification file.
+    # In here you define each of the output types you want to create,
+    # and then provide search expressions for the SVG files you want to process.
     # Each SVG file is processes against the matching type specifiers to create
-    # multiple PNG files in all of the sizes you need for your Android and iOS projects
-    
+    # multiple PNG files in all of the sizes you need for your Android and iOS projects.
+
+    # If only one the width or the height is specified then an it attempts to scale 
+    # unspecified one is scaled to match. 
+
     { type: 'AndroidIcon', width: 36, color: '#f80c12', path: 'Android/Resources/drawable-ldpi/{0}' }
     { type: 'AndroidIcon', width: 48, color: '#f80c12', path: 'Android/Resources/drawable-mdpi/{0}' }
     { type: 'AndroidIcon', width: 72, color: '#f80c12', path: 'Android/Resources/drawable-hdpi/{0}' }
@@ -42,11 +58,19 @@ Here is a sample '.multiplier' file:
     { type: 'iosIcon', width:  80, path: 'iOS/Resources/{0}40@2x' }
     { type: 'iosIcon', width: 114, path: 'iOS/Resources/{0}57@2x' }
     { type: 'iosIcon', width: 120, path: 'iOS/Resources/{0}60@2x' }
-    
-    { type: 'TabIcon', width: 52, color: '#f80c12', path: 'Android/Resources/drawable-ldpi{0}' }
-    
+
+    { type: 'TabIcon', height: 52, color: '#f80c12', path: 'Android/Resources/drawable-ldpi{0}' }
+
+    # You can scale an image with or without a width/height, if the height/width is left off then
+    # it will use the svg's default size. 
+
+    { type: 'TabIconiOS', width: 52, color: '#f80c12', path: 'iOS/Resources/{0}' }
+    { type: 'TabIconiOS', width: 52, scaling: 2, color: '#f80c12', path: 'iOS/Resources/{0}@2x' }
+   	{ type: 'TabIconiOS', width: 52, scaling: 3, color: '#f80c12', path: 'iOS/Resources/{0}@3x' }
+
     # You can process multiple directories, each with different type specifiers
     { process: './*.svg', as: ['AndroidIcon', 'iosIcon'] }
+    { process: './tabIcon/*.svg', as: ['TabIcon', 'TabIconiOS'] }
 
 Note how the 'as' parameter in the process instructions contains an array of 'type' values. These
 refer to the output types defined earlier in the file. Each SVG file or directory of SVG files can
@@ -91,7 +115,6 @@ which will force regeneration of all the PNG files.
 
 Support colorization of SVG files to allow, for example, a red, green and blue version of an icon.
 
-Support height and width for non-square icons.
 
 
 

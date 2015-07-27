@@ -84,9 +84,14 @@
 			<Word>process</Word>
 			<Word>type</Word>
 			<Word>width</Word>
+			<Word>height</Word>
+			<Word>scaling</Word>
 			<Word>color</Word>
 			<Word>path</Word>
 			<Word>as</Word>
+			<Word>ios_idiom</Word>
+			<Word>ios_scale</Word>
+			<Word>ios_subtype</Word>
 		</Keywords>
 
 		<Keywords color="Punctuation">
