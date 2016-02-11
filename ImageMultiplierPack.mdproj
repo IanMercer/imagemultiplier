@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProjectGuid>{846333D3-4CFD-467D-9C85-6D7E9DE27DA5}</ProjectGuid>
+    <Packages>
+      <Packages xmlns="">
+        <Package name="ImageMultiplier">
+          <Builder targetFile="ImageMultiplier\ImageMultiplier.tar.gz" platform="Windows" configuration="Release" ctype="BinariesZipPackageBuilder">
+            <RootEntry path="ImageMultiplier\ImageMultiplier.csproj" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>

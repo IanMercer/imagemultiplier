@@ -48,12 +48,12 @@ namespace ImageMultiplier
                 foreach (var outputter in outputters)
                 {
                     string formattedPath = GetFullOutputPath (dir, outputter, svgFile);
-                    ProcessOneFile (inputInfo, svgFile, formattedPath, outputter.width, lineNumber);
+					ProcessOneFile (inputInfo, svgFile, formattedPath, outputter.width,outputter.height==0?outputter.width:outputter.height ,  lineNumber);
                 };
             }
         }
 
-        private void ProcessOneFile(FileInfo inputInfo, string svgFile, string outputPath, int width, int lineNumber)
+		private void ProcessOneFile(FileInfo inputInfo, string svgFile, string outputPath, int width, int height, int lineNumber)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace ImageMultiplier
                 }
 
                 // Wipe out any size information
-                svgDocument.Height = new SvgUnit(SvgUnitType.Pixel, width);
+                svgDocument.Height = new SvgUnit(SvgUnitType.Pixel, height);
                 svgDocument.Width =  new SvgUnit(SvgUnitType.Pixel, width);
 
                 // Change the default color
@@ -98,7 +98,7 @@ namespace ImageMultiplier
 //                }
 //                monitor.Log.WriteLine("Custom attributes style = " + svgDocument.CustomAttributes["style"]);
 
-                using (var bb = new System.Drawing.Bitmap(width, width))
+                using (var bb = new System.Drawing.Bitmap(width, height))
                 {
                     svgDocument.Draw(bb);
                     bb.Save(outputPath, ImageFormat.Png);
