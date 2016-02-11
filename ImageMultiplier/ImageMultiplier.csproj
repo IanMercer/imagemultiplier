@@ -82,7 +82,7 @@
   <ItemGroup>
     <EmbeddedResource Include="ImageMultiplier.xft.xml" />
     <EmbeddedResource Include="ImageMultiplierSyntax.xml" />
-    <EmbeddedResource Include="Manifest.addin.xml">
+    <EmbeddedResource Include="Properties\Manifest.addin.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
