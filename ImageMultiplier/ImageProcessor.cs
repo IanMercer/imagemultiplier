@@ -15,10 +15,10 @@ namespace ImageMultiplier
     /// </summary>
     public class ImageProcessor
     {
-        private readonly IProgressMonitor monitor;
+        private readonly ProgressMonitor monitor;
         private readonly SingleFileCustomToolResult result;
 
-        public ImageProcessor (IProgressMonitor monitor, SingleFileCustomToolResult result)
+        public ImageProcessor (ProgressMonitor monitor, SingleFileCustomToolResult result)
         {
             this.monitor = monitor;
             this.result = result;
@@ -48,12 +48,12 @@ namespace ImageMultiplier
                 foreach (var outputter in outputters)
                 {
                     string formattedPath = GetFullOutputPath (dir, outputter, svgFile);
-					ProcessOneFile (inputInfo, svgFile, formattedPath, outputter.width,outputter.height==0?outputter.width:outputter.height ,  lineNumber);
+					ProcessOneFile (inputInfo, svgFile, formattedPath, outputter.width,outputter.height==0?outputter.width:outputter.height ,  lineNumber,outputter.color);
                 };
             }
         }
 
-		private void ProcessOneFile(FileInfo inputInfo, string svgFile, string outputPath, int width, int height, int lineNumber)
+		private void ProcessOneFile(FileInfo inputInfo, string svgFile, string outputPath, int width, int height, int lineNumber,string hexColor)
         {
             try
             {
@@ -85,6 +85,9 @@ namespace ImageMultiplier
                 // Wipe out any size information
                 svgDocument.Height = new SvgUnit(SvgUnitType.Pixel, height);
                 svgDocument.Width =  new SvgUnit(SvgUnitType.Pixel, width);
+				if(!string.IsNullOrEmpty(hexColor)){
+					svgDocument.Color = new SvgColourServer(System.Drawing.ColorTranslator.FromHtml(hexColor));
+				}
 
                 // Change the default color
                 // TODO: This is not yet working

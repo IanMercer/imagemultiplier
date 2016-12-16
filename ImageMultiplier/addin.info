@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionModel id="ImageMultiplier">
+
+    <Header>
+        <Name>Image Multiplier</Name>
+        <Description>Creates all the icons you need for your Xamarin project from SVGs</Description>
+        <Author>Ian Mercer</Author>
+        <Url>http://github.com/ianmercer/imagemultiplier</Url>
+        <Icon32>git.png</Icon32>
+    </Header>
+
+	<Runtime>
+		 <Import assembly="ImageMultiplier.dll"/>
+		 <Import assembly="Newtonsoft.Json.dll"/>
+		 <Import assembly="Svg.dll"/>
+	</Runtime>
+
+	<Extension path="/MonoDevelop/Ide/CustomTools">
+		<Tool name="ImageMultiplierGenerator" type="ImageMultiplier.ImageMultiplierGenerator" />
+	</Extension>
+
+	<Extension path="/MonoDevelop/Ide/FileTemplates">
+		<FileTemplate id="ImageMultiplierTemplate" resource="ImageMultiplier.ImageMultiplier.xft.xml" />
+	</Extension>
+
+	<Extension path="/MonoDevelop/Core/MimeTypes">
+		<MimeType id="text/x-multiplier" _description="Image Multiplier List File" 
+			icon="md-fs-file" isText="true">
+			<File pattern="*.multiplier" />
+		</MimeType>
+	</Extension>
+
+	<Extension path="/MonoDevelop/SourceEditor2/SyntaxModes">
+		<Templates resource="ImageMultiplier.ImageMultiplierSyntax.xml"/>
+	</Extension>
+
+</ExtensionModel>
