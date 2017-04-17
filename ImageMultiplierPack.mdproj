@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProjectGuid>{846333D3-4CFD-467D-9C85-6D7E9DE27DA5}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package name="ImageX">
+          <Builder targetFile="ImageMultiplierWin.zip" platform="Windows" configuration="Release" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="ImageMultiplier\ImageMultiplier.csproj" />
+            </ChildEntries>
+            <RootEntry path="ImageMultiplier.sln" id=":root:" />
+          </Builder>
+        </Package>
+        <Package name="Microsoft Windows Binaries">
+          <Builder targetFile="ImageMultiplier.tar.gz" platform="Windows" configuration="Release" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="ImageMultiplier\ImageMultiplier.csproj" />
+              <SolutionItemReference path="ImageMultiplier.sln" id="{9D0B6B14-A4E6-4CFE-BE9A-4C63865A7C4D}" />
+            </ChildEntries>
+            <RootEntry path="ImageMultiplier.sln" id=":root:" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>

@@ -19,6 +19,11 @@ namespace ImageMultiplier
         /// <value>The width.</value>
         public int width { get; set; }
 
+		/// <summary>
+		/// Gets or sets the height.
+		/// </summary>
+		/// <value>The height.</value>
+		public int height { get; set; }
         /// <summary>
         /// Not used yet, but will allow recoloring of SVG icons
         /// </summary>
